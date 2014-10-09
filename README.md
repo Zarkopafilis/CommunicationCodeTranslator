@@ -1,2 +1,3 @@
 CommunicationCodeTranslator
 ===========================
+aka CCTranslator

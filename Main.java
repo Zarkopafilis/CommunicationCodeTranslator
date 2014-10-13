@@ -69,8 +69,6 @@ public class Main extends Application{
 		output.setMaxWidth(750);
 		output.setPrefHeight(250);
 		
-		//todo listeners
-		
 		box.getChildren().addAll(input , output);
 		
 		root.getChildren().add(box);

@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -44,6 +46,22 @@ public class Main extends Application{
 		
 		output = new TextArea("");
 		output.setPromptText("Write stuff to decrypt here");
+		
+		input.textProperty().addListener(new ChangeListener<String>() {
+		    @Override
+		    public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
+		        output.setText(trans.doIt(newValue, true));
+		    }
+		});
+		
+		output.textProperty().addListener(new ChangeListener<String>() {
+		    @Override
+		    public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
+		        input.setText(trans.doIt(newValue, false));
+		    }
+		});
+		
+		
 		
 		input.setMaxWidth(750);
 		input.setPrefHeight(250);

@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Properties;
 
@@ -8,15 +9,20 @@ public class CCTranslator {
 	private Properties greek , eng;
 	public boolean english;
 	
-	public CCTranslator() throws Exception{
+	public CCTranslator(){
 		
 		english = true;
 		
 		greek = new Properties();
 		eng = new Properties();
 		
-		greek.load(new FileInputStream("res" + File.separator + "greek.properties"));
-		eng.load(new FileInputStream("res" + File.separator + "eng.properties"));
+		
+		try {
+			greek.load(new FileInputStream("res" + File.separator + "greek.properties"));
+			eng.load(new FileInputStream("res" + File.separator + "eng.properties"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
